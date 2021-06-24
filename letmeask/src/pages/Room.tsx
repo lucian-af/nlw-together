@@ -1,6 +1,7 @@
 import { FormEvent, useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import { useParams } from 'react-router-dom';
+import { Icons } from '../assets/icons/icons';
 import logo from '../assets/images/logo.svg';
 import { Button } from '../components/Button';
 import { Question } from '../components/Question';
@@ -26,7 +27,7 @@ export function Room() {
 
     if (newQuestion.trim() === '') {
       toast('Digite sua pergunta primeiro!', {
-        icon: '⚠️',
+        icon: Icons.warning,
       });
       return;
     }
