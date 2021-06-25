@@ -26,7 +26,12 @@ export function Home() {
   async function handleJoinRoom(event: FormEvent) {
     event.preventDefault();
 
-    if (roomCode.trim() === '') return;
+    if (roomCode.trim() === '') {
+      toast('Informe uma sala primeiro', {
+        icon: Icons.info,
+      });
+      return;
+    }
 
     const roomRef = await database.ref(`rooms/${roomCode}`).get();
 

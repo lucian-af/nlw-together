@@ -113,6 +113,25 @@
 
     .question-list {
       margin-top: 32px;
+      height: calc(100vh - 45vh);
+      overflow: hidden auto;
+      border: 0.2px solid var(--gray-75);
+      border-radius: 8px;
+
+      &::-webkit-scrollbar {
+        width: 12px;
+      }
+
+      &::-webkit-scrollbar-track {
+        background: var(--gray-75);
+        border-radius: 8px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: var(--purple);
+        border-radius: 20px;
+        border: 3px solid var(--gray-75);
+      }
     }
   }
 }

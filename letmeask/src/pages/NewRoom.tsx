@@ -1,5 +1,7 @@
 import { FormEvent, useState } from 'react';
+import toast, { Toaster } from 'react-hot-toast';
 import { Link, useHistory } from 'react-router-dom';
+import { Icons } from '../assets/icons/icons';
 import illustration from '../assets/images/illustration.svg';
 import logoImg from '../assets/images/logo.svg';
 import { Button } from '../components/Button';
@@ -15,7 +17,12 @@ export function NewRoom() {
   async function handleCreateRoom(event: FormEvent) {
     event.preventDefault();
 
-    if (newRoom.trim() === '') return;
+    if (newRoom.trim() === '') {
+      toast('Informe o nome da sala', {
+        icon: Icons.info,
+      });
+      return;
+    }
 
     const roomRef = database.ref('rooms');
 
@@ -24,7 +31,7 @@ export function NewRoom() {
       authorId: user?.id,
     });
 
-    history.push(`/rooms/${firebaseRoom.key}`);
+    history.push(`/admin/rooms/${firebaseRoom.key}`);
   }
 
   return (
@@ -52,6 +59,7 @@ export function NewRoom() {
           </p>
         </div>
       </main>
+      <Toaster position="top-center" reverseOrder={false} />
     </div>
   );
 }
